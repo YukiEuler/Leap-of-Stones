@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://djrawxaxyxpt5"]
+
+[ext_resource type="Script" path="res://Player/Script/player.gd" id="1_rj78p"]
+[ext_resource type="PackedScene" uid="uid://co5o0f2kev6o1" path="res://UI/Scnee/PlayerUI/player_ui.tscn" id="3_khy3o"]
+[ext_resource type="PackedScene" uid="uid://bkuy8xlou7s54" path="res://UI/Scnee/Pause/Pause.tscn" id="3_kpnol"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mw1u8"]
+radius = 0.269905
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m0niy"]
+radius = 0.25
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bqaha"]
+albedo_color = Color(0.207843, 0.207843, 0.207843, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v37d0"]
+material = SubResource("StandardMaterial3D_bqaha")
+size = Vector3(0.285, 0.1, 0.125)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2unc"]
+albedo_color = Color(0.952941, 0.458824, 0.643137, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g1drq"]
+material = SubResource("StandardMaterial3D_t2unc")
+size = Vector3(0.03, 0.46, 0.07)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8uigw"]
+albedo_color = Color(0.67451, 0.407843, 0.278431, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tfwcm"]
+material = SubResource("StandardMaterial3D_8uigw")
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.07
+radial_segments = 8
+
+[node name="Player" type="Player" groups=["Player"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_rj78p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_mw1u8")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="BodyMeshDebug" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CapsuleMesh_m0niy")
+skeleton = NodePath("../..")
+
+[node name="Eye" type="MeshInstance3D" parent="Model/BodyMeshDebug"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.202, 0.209625)
+mesh = SubResource("BoxMesh_v37d0")
+
+[node name="Hand" type="Node3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.171114)
+
+[node name="RightHandModel" type="Node3D" parent="Model/Hand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.224346, 0.529966, 0.0809023)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Hand/RightHandModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0327438, 0.231954, -0.0202996)
+mesh = SubResource("BoxMesh_g1drq")
+
+[node name="LeftHand" type="Node3D" parent="Model/Hand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.328218, 0.585135, -0.144214)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Hand/LeftHand"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0.185242)
+mesh = SubResource("CylinderMesh_tfwcm")
+
+[node name="PlayerUI" parent="." instance=ExtResource("3_khy3o")]
+visible = false
+
+[node name="Pause" parent="." instance=ExtResource("3_kpnol")]
+
+[node name="Cam" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Cam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.5)
