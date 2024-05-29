@@ -1,6 +1,6 @@
 [configuration]
 
-entry_symbol = "example_library_init"
+entry_symbol = "leap_of_stones_library"
 compatibility_minimum = 4.2
 
 [libraries]

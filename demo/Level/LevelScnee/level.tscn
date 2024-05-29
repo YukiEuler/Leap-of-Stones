@@ -1,0 +1,356 @@
+[gd_scene load_steps=28 format=3 uid="uid://b7w0vh54kly3j"]
+
+[ext_resource type="PackedScene" uid="uid://brtgyhr5pcan5" path="res://Asset/PrefabsStatic/Tree/tree.tscn" id="1_0afq7"]
+[ext_resource type="PackedScene" uid="uid://cmo5vfkwthtqs" path="res://Player/player_controller.tscn" id="1_0rrw3"]
+[ext_resource type="PackedScene" uid="uid://ddgjhqgv5ueiv" path="res://Asset/PrefabsActive/Gapura/gapura.tscn" id="1_wlhl6"]
+[ext_resource type="PackedScene" uid="uid://c70yinodjgfeg" path="res://Asset/PrefabsStatic/Mountain/mountain.tscn" id="2_ldkrc"]
+[ext_resource type="PackedScene" uid="uid://cpp20qu5qjiw4" path="res://Asset/PrefabsStatic/FloatingIsland/floating_island_type_2.tscn" id="3_vfrvu"]
+[ext_resource type="PackedScene" uid="uid://qvb8iqujvby7" path="res://Asset/PrefabsStatic/FloatingIsland/floating_island_type_1.tscn" id="4_hjs5t"]
+[ext_resource type="PackedScene" uid="uid://ceuua1n3vlps6" path="res://Asset/PrefabsStatic/Platform/platform.tscn" id="5_q7eb8"]
+[ext_resource type="PackedScene" uid="uid://cph4d81vhk207" path="res://Asset/PrefabsStatic/House/house.tscn" id="6_g4kel"]
+[ext_resource type="Texture2D" uid="uid://be12xfgjkerev" path="res://Asset/Material/Texture/animestyled_hdr.hdr" id="6_ghy3n"]
+[ext_resource type="PackedScene" uid="uid://dfa2oivki4bsc" path="res://Asset/PrefabsActive/BallonShip/ballon_ship.tscn" id="7_3bmno"]
+[ext_resource type="Script" path="res://Level/LevelScnee/Script/BoundaryArea.gd" id="10_288n0"]
+[ext_resource type="PackedScene" uid="uid://bmdhk1rjiu62i" path="res://Asset/PrefabsActive/BallonShip/coins.tscn" id="12_s6edw"]
+[ext_resource type="Script" path="res://Level/LevelScnee/SuperJump.gd" id="13_hh0es"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0dj7k"]
+panorama = ExtResource("6_ghy3n")
+
+[sub_resource type="Sky" id="Sky_r0pni"]
+sky_material = SubResource("PanoramaSkyMaterial_0dj7k")
+
+[sub_resource type="Environment" id="Environment_o771r"]
+background_mode = 2
+background_energy_multiplier = 0.4
+sky = SubResource("Sky_r0pni")
+sky_rotation = Vector3(0, -2.74017, 0)
+ambient_light_energy = 0.0
+tonemap_mode = 2
+tonemap_exposure = 2.35
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.8
+fog_light_color = Color(0.338506, 0.584843, 0.711832, 1)
+fog_light_energy = 0.37
+adjustment_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_xf1q7"]
+dof_blur_far_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_e277a"]
+offsets = PackedFloat32Array(0, 0.989583)
+colors = PackedColorArray(0, 0, 0, 0.678431, 1, 1, 1, 0.639216)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_k25l4"]
+frequency = 0.0508
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jfo6n"]
+in_3d_space = true
+seamless = true
+color_ramp = SubResource("Gradient_e277a")
+noise = SubResource("FastNoiseLite_k25l4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvnor"]
+transparency = 1
+albedo_texture = SubResource("NoiseTexture2D_jfo6n")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uyn55"]
+material = SubResource("StandardMaterial3D_cvnor")
+top_radius = 180.49
+bottom_radius = 180.49
+height = 0.53
+radial_segments = 12
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0mcyc"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="Curve3D" id="Curve3D_g27vk"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -2.80369, -2.74777e-05, 1.08281, 2.80369, 2.74777e-05, -1.08281, 8.04746, 0.126221, 0.44394, 0, 0, 0, 0, 0, 0, 11.2833, 0.00865316, -5.89042),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r1fgr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7p1a"]
+albedo_color = Color(0.623529, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ly3ux"]
+material = SubResource("StandardMaterial3D_q7p1a")
+
+[node name="Level" type="Node3D"]
+
+[node name="Gapura" parent="." instance=ExtResource("1_wlhl6")]
+transform = Transform3D(-0.4, 0, 3.49691e-08, 0, 0.4, 0, -3.49691e-08, 0, -0.4, 24, 0, -33)
+
+[node name="PlayerController" parent="." instance=ExtResource("1_0rrw3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 12.7806)
+
+[node name="Mountain" parent="." instance=ExtResource("2_ldkrc")]
+transform = Transform3D(-0.428847, 0, 0.360126, 0, 0.56, 0, -0.360126, 0, -0.428847, 33, -5, 0)
+
+[node name="Mountain3" parent="." instance=ExtResource("2_ldkrc")]
+transform = Transform3D(0.28, 0, 0.484974, 0, 0.56, 0, -0.484974, 0, 0.28, -39, -1.60829, 0)
+
+[node name="Mountain2" parent="." instance=ExtResource("2_ldkrc")]
+transform = Transform3D(0.772394, 0, 0, 0, 0.772394, 0, 0, 0, 0.772394, -4, -4.57943, -53.0358)
+
+[node name="Platformmer" type="Node3D" parent="."]
+
+[node name="FloatingIslandType4" parent="Platformmer" instance=ExtResource("3_vfrvu")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.63048, 0, 1.37252)
+
+[node name="Tree6" parent="Platformmer/FloatingIslandType4" instance=ExtResource("1_0afq7")]
+transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, 3.15731, 0, -4.72824)
+
+[node name="Tree8" parent="Platformmer/FloatingIslandType4" instance=ExtResource("1_0afq7")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -5.61292, 0, -1.77963)
+
+[node name="Tree9" parent="Platformmer/FloatingIslandType4" instance=ExtResource("1_0afq7")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, 2.70367, 0, 3.43715)
+
+[node name="FloatingIslandType9" parent="Platformmer" instance=ExtResource("3_vfrvu")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.11276, 0.561571, -28.3169)
+
+[node name="Tree6" parent="Platformmer/FloatingIslandType9" instance=ExtResource("1_0afq7")]
+transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, 3.15731, 0, -4.72824)
+
+[node name="Tree8" parent="Platformmer/FloatingIslandType9" instance=ExtResource("1_0afq7")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -5.61292, 0, -1.77963)
+
+[node name="Tree9" parent="Platformmer/FloatingIslandType9" instance=ExtResource("1_0afq7")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, 2.70367, 0, 3.43715)
+
+[node name="FloatingIslandType10" parent="Platformmer" instance=ExtResource("3_vfrvu")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -14.2365, 1.21285, -5.8042)
+
+[node name="Tree6" parent="Platformmer/FloatingIslandType10" instance=ExtResource("1_0afq7")]
+transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, 3.15731, 0, -4.72824)
+
+[node name="Tree8" parent="Platformmer/FloatingIslandType10" instance=ExtResource("1_0afq7")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -5.61292, 0, -1.77963)
+
+[node name="Tree9" parent="Platformmer/FloatingIslandType10" instance=ExtResource("1_0afq7")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, 2.70367, 0, 3.43715)
+
+[node name="FloatingIslandType11" parent="Platformmer" instance=ExtResource("3_vfrvu")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 11.1956, -1.37588, 13.8681)
+
+[node name="Tree6" parent="Platformmer/FloatingIslandType11" instance=ExtResource("1_0afq7")]
+transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, 3.15731, 0, -4.72824)
+
+[node name="Tree8" parent="Platformmer/FloatingIslandType11" instance=ExtResource("1_0afq7")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -5.61292, 0, -1.77963)
+
+[node name="Tree9" parent="Platformmer/FloatingIslandType11" instance=ExtResource("1_0afq7")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, 2.70367, 0, 3.43715)
+
+[node name="FloatingIslandType12" parent="Platformmer" instance=ExtResource("3_vfrvu")]
+transform = Transform3D(0.224877, 0, -0.19857, 0, 0.3, 0, 0.19857, 0, 0.224877, 15.08, -0.471586, -13.0415)
+
+[node name="Tree6" parent="Platformmer/FloatingIslandType12" instance=ExtResource("1_0afq7")]
+transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, 1.40436, 0, -4.72824)
+
+[node name="Tree8" parent="Platformmer/FloatingIslandType12" instance=ExtResource("1_0afq7")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -5.61292, 0, -1.77963)
+
+[node name="Tree9" parent="Platformmer/FloatingIslandType12" instance=ExtResource("1_0afq7")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, 2.70367, 0, 3.43715)
+
+[node name="FloatingIslandType3" parent="Platformmer" instance=ExtResource("3_vfrvu")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -5, -0.579424, 4.34748)
+
+[node name="Tree4" parent="Platformmer/FloatingIslandType3" instance=ExtResource("1_0afq7")]
+transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, -5.4302, 0, -1.46524)
+
+[node name="Tree5" parent="Platformmer/FloatingIslandType3" instance=ExtResource("1_0afq7")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -0.137817, 0, -5.32111)
+
+[node name="Tree7" parent="Platformmer/FloatingIslandType3" instance=ExtResource("1_0afq7")]
+transform = Transform3D(0.972, 0, 0, 0, 0.972, 0, 0, 0, 0.972, 3.86927, 0, 2.84427)
+
+[node name="FloatingIslandType7" parent="Platformmer" instance=ExtResource("3_vfrvu")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 24, 1.14811, -25)
+
+[node name="Tree4" parent="Platformmer/FloatingIslandType7" instance=ExtResource("1_0afq7")]
+transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, -1.57529, -0.261735, 4.38419)
+
+[node name="Tree5" parent="Platformmer/FloatingIslandType7" instance=ExtResource("1_0afq7")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, 4.46941, 0, -1.45342)
+
+[node name="Tree7" parent="Platformmer/FloatingIslandType7" instance=ExtResource("1_0afq7")]
+transform = Transform3D(0.972, 0, 0, 0, 0.972, 0, 0, 0, 0.972, 3.86927, 0, 2.84427)
+
+[node name="FloatingIslandType1" parent="Platformmer" instance=ExtResource("4_hjs5t")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -5, 0, 11)
+
+[node name="Tree" parent="Platformmer/FloatingIslandType1" instance=ExtResource("1_0afq7")]
+transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, -4.12727, 0, -4.78278)
+
+[node name="Tree2" parent="Platformmer/FloatingIslandType1" instance=ExtResource("1_0afq7")]
+transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, 3.77851, -0.154711, -2.18374)
+
+[node name="Tree3" parent="Platformmer/FloatingIslandType1" instance=ExtResource("1_0afq7")]
+transform = Transform3D(0.775, 0, 0, 0, 0.775, 0, 0, 0, 0.775, -4.06887, 0, 5.55433)
+
+[node name="FloatingIslandType8" parent="Platformmer" instance=ExtResource("4_hjs5t")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 24, 0, -32)
+
+[node name="Tree" parent="Platformmer/FloatingIslandType8" instance=ExtResource("1_0afq7")]
+transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, -4.78082, 0, -3.33334)
+
+[node name="Tree2" parent="Platformmer/FloatingIslandType8" instance=ExtResource("1_0afq7")]
+transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, 4.02589, -0.154711, -2.01078)
+
+[node name="Tree3" parent="Platformmer/FloatingIslandType8" instance=ExtResource("1_0afq7")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -7.19674, 0, -1.43652)
+
+[node name="FloatingIslandType2" parent="Platformmer" instance=ExtResource("4_hjs5t")]
+transform = Transform3D(0.289778, 3.394e-09, 0.0776457, -3.394e-09, 0.3, -4.46829e-10, -0.0776457, -4.46829e-10, 0.289778, 1, 0.691075, -5)
+
+[node name="Tree10" parent="Platformmer/FloatingIslandType2" instance=ExtResource("1_0afq7")]
+transform = Transform3D(0.93888, -1.09966e-08, -0.251572, 1.09966e-08, 0.972, -1.44772e-09, 0.251572, -1.44772e-09, 0.93888, 6.52043, 7.47866e-08, 0.68397)
+
+[node name="Tree11" parent="Platformmer/FloatingIslandType2" instance=ExtResource("1_0afq7")]
+transform = Transform3D(1.02002, -1.19469e-08, -0.273313, 1.19469e-08, 1.056, -1.57284e-09, 0.273313, -1.57284e-09, 1.02002, 4.05402, 4.07034e-08, -3.46511)
+
+[node name="Tree12" parent="Platformmer/FloatingIslandType2" instance=ExtResource("1_0afq7")]
+transform = Transform3D(1.15911, -1.3576e-08, -0.310583, 1.3576e-08, 1.2, -1.78731e-09, 0.310583, -1.78731e-09, 1.15911, -6.99138, -8.17208e-08, -1.76242)
+
+[node name="Tree13" parent="Platformmer/FloatingIslandType2" instance=ExtResource("1_0afq7")]
+transform = Transform3D(1.02002, -1.19469e-08, -0.273313, 1.19469e-08, 1.056, -1.57284e-09, 0.273313, -1.57284e-09, 1.02002, -3.28, -2.86564e-08, 5.67421)
+
+[node name="FloatingIslandType5" parent="Platformmer" instance=ExtResource("4_hjs5t")]
+transform = Transform3D(-0.289778, 0, 0.0776457, 0, 0.3, 0, -0.0776457, 0, -0.289778, 0, 0, -12)
+
+[node name="Tree14" parent="Platformmer/FloatingIslandType5" instance=ExtResource("1_0afq7")]
+transform = Transform3D(-0.927289, 0, -0.248466, 0, 0.96, 0, 0.248466, 0, -0.927289, -7.76303, 0, -1.12182)
+
+[node name="Tree15" parent="Platformmer/FloatingIslandType5" instance=ExtResource("1_0afq7")]
+transform = Transform3D(-0.927289, 0, -0.248466, 0, 0.96, 0, 0.248466, 0, -0.927289, -4.18215, 0, 2.72538)
+
+[node name="Tree16" parent="Platformmer/FloatingIslandType5" instance=ExtResource("1_0afq7")]
+transform = Transform3D(-0.83456, 0, -0.22362, 0, 0.864, 0, 0.22362, 0, -0.83456, 3.79358, 0, -3.07174)
+
+[node name="Tree17" parent="Platformmer/FloatingIslandType5" instance=ExtResource("1_0afq7")]
+transform = Transform3D(-0.930488, 0, -0.249324, 0, 0.963312, 0, 0.249324, 0, -0.930488, 5.57397, 0, 1.81969)
+
+[node name="Platform" parent="Platformmer/FloatingIslandType5" instance=ExtResource("5_q7eb8")]
+transform = Transform3D(0.880918, 0, -0.108491, 0, 0.887572, 0, 0.108491, 0, 0.880918, -0.349655, 0, 10.4465)
+
+[node name="FloatingIslandType6" parent="Platformmer" instance=ExtResource("4_hjs5t")]
+transform = Transform3D(0.0776457, 1.47506e-08, -0.289778, 1.47506e-08, 0.3, 1.92233e-08, 0.289778, -1.92233e-08, 0.0776457, 17, 0, -23)
+
+[node name="Tree14" parent="Platformmer/FloatingIslandType6" instance=ExtResource("1_0afq7")]
+transform = Transform3D(-0.927289, 0, -0.248466, 0, 0.96, 0, 0.248466, 0, -0.927289, -7.56025, 0, -0.365025)
+
+[node name="Tree15" parent="Platformmer/FloatingIslandType6" instance=ExtResource("1_0afq7")]
+transform = Transform3D(-0.927289, 0, -0.248466, 0, 0.96, 0, 0.248466, 0, -0.927289, -4.25833, 0, 2.44106)
+
+[node name="Tree16" parent="Platformmer/FloatingIslandType6" instance=ExtResource("1_0afq7")]
+transform = Transform3D(-0.83456, 0, -0.22362, 0, 0.864, 0, 0.22362, 0, -0.83456, 3.79358, 0, -3.07174)
+
+[node name="Tree17" parent="Platformmer/FloatingIslandType6" instance=ExtResource("1_0afq7")]
+transform = Transform3D(-0.930488, 0, -0.249324, 0, 0.963312, 0, 0.249324, 0, -0.930488, 5.57397, 0, 1.81969)
+
+[node name="Platform" parent="Platformmer/FloatingIslandType6" instance=ExtResource("5_q7eb8")]
+transform = Transform3D(0.880918, 0, -0.108491, 0, 0.887572, 0, 0.108491, 0, 0.880918, -0.349655, 0, 10.4465)
+
+[node name="House" parent="Platformmer" instance=ExtResource("6_g4kel")]
+transform = Transform3D(-1.3332e-08, 0, 0.305, 0, 0.305, 0, -0.305, 0, -1.3332e-08, 1.63146, 0, 1.33308)
+
+[node name="House3" parent="Platformmer" instance=ExtResource("6_g4kel")]
+transform = Transform3D(0.128116, 0, 0.276787, 0, 0.305, 0, -0.276787, 0, 0.128116, 15.3292, -0.485249, -13.047)
+
+[node name="House2" parent="Platformmer" instance=ExtResource("6_g4kel")]
+transform = Transform3D(-0.215668, 0, -0.215668, 0, 0.305, 0, 0.215668, 0, -0.215668, -6.60577, 0, 10.8179)
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(0.986016, 0.0380486, 0.162247, -0.166648, 0.225124, 0.959973, 0, -0.973587, 0.228317, -2.3743, 4.03709, 3.17623)
+light_energy = 2.0
+shadow_enabled = true
+shadow_normal_bias = 0.0
+shadow_opacity = 0.6
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = SubResource("Environment_o771r")
+camera_attributes = SubResource("CameraAttributesPractical_xf1q7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11, 0)
+mesh = SubResource("CylinderMesh_uyn55")
+
+[node name="BoundaryArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+script = ExtResource("10_288n0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoundaryArea"]
+shape = SubResource("BoxShape3D_0mcyc")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.581, 0, -16.257)
+curve = SubResource("Curve3D_g27vk")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+unique_name_in_owner = true
+transform = Transform3D(-0.0550801, -0.0156343, -0.998335, -9.31296e-10, 0.99983, -0.0156585, 0.998453, -0.000862473, -0.0550736, 0, 0, 0)
+
+[node name="Ship" type="Node3D" parent="Path3D/PathFollow3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="BallonShip" parent="Path3D/PathFollow3D/Ship" instance=ExtResource("7_3bmno")]
+transform = Transform3D(0.535, -1.40062e-09, -5.58794e-09, 2.72848e-10, 0.535, -4.36557e-10, 9.31323e-09, 2.61934e-10, 0.535, 0.103016, 0.078872, -0.814718)
+
+[node name="SuperJump" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.301883, 1.04057, -5.55964)
+script = ExtResource("13_hh0es")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SuperJump"]
+shape = SubResource("SphereShape3D_r1fgr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SuperJump"]
+mesh = SubResource("SphereMesh_ly3ux")
+
+[node name="SuperJump2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5836, 1.81926, -6.26071)
+script = ExtResource("13_hh0es")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SuperJump2"]
+shape = SubResource("SphereShape3D_r1fgr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SuperJump2"]
+mesh = SubResource("SphereMesh_ly3ux")
+
+[node name="Coins" parent="." instance=ExtResource("12_s6edw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.43222, -0.172303, 4.05084)
+
+[node name="Coins2" parent="." instance=ExtResource("12_s6edw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.268684, 0.407985, 1.07863)
+
+[node name="Coins3" parent="." instance=ExtResource("12_s6edw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.65843, 1.11903, -12.0796)
+
+[node name="Coins4" parent="." instance=ExtResource("12_s6edw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.29895, 0.225632, 9.73534)
+
+[node name="Coins5" parent="." instance=ExtResource("12_s6edw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02162, 0.200981, 2.33157)
+
+[node name="Coins6" parent="." instance=ExtResource("12_s6edw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6867, -0.233133, -13.8763)
+
+[node name="Coins7" parent="." instance=ExtResource("12_s6edw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4172, 1.23296, -19.1581)
+
+[node name="Coins8" parent="." instance=ExtResource("12_s6edw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.38105, 7.0213, -6.38117)
+
+[connection signal="body_entered" from="BoundaryArea" to="BoundaryArea" method="_on_body_entered"]
+[connection signal="body_entered" from="SuperJump" to="SuperJump" method="_on_body_entered"]
+[connection signal="body_exited" from="SuperJump" to="SuperJump" method="_on_body_exited"]
+[connection signal="body_entered" from="SuperJump2" to="SuperJump2" method="_on_body_entered"]
+[connection signal="body_exited" from="SuperJump2" to="SuperJump2" method="_on_body_exited"]

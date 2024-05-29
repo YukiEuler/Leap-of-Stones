@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c70yinodjgfeg"]
+
+[ext_resource type="PackedScene" uid="uid://dfcbetjiao1n6" path="res://Asset/PrefabsStatic/Mountain/Mountain.glb" id="1_yokxh"]
+[ext_resource type="Material" uid="uid://30mvq5ih2gkh" path="res://Asset/Material/GlobalMaterial.tres" id="2_galxb"]
+
+[node name="Mountain" instance=ExtResource("1_yokxh")]
+
+[node name="CliffGrassy_001" parent="." index="0"]
+material_override = ExtResource("2_galxb")

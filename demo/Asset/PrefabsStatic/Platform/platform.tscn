@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceuua1n3vlps6"]
+
+[ext_resource type="PackedScene" uid="uid://cxxbcid6yaoc" path="res://Asset/PrefabsStatic/Platform/Platform.glb" id="1_reml1"]
+[ext_resource type="Material" uid="uid://30mvq5ih2gkh" path="res://Asset/Material/GlobalMaterial.tres" id="2_np1t1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tu5ct"]
+size = Vector3(2.8, 2, 2.8)
+
+[node name="Platform" instance=ExtResource("1_reml1")]
+
+[node name="Cube_009" parent="." index="0"]
+material_override = ExtResource("2_np1t1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube_009" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_009/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_tu5ct")

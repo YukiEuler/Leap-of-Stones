@@ -1,10 +1,10 @@
 #include "register_types.h"
 
-#include "gdexample.h"
-#include "movementtest.h"
-#include "star.h"
+#include "coin.h"
 #include "player.h"
 #include "timelabel.h"
+#include "ballonship.h"
+#include "superjump.h"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
@@ -12,27 +12,12 @@
 
 using namespace godot;
 
-void initialize_example_module(ModuleInitializationLevel p_level) {
+
+void initialize_coin(ModuleInitializationLevel p_level){
 	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
-
-	ClassDB::register_class<GDExample>();
-}
-
-void initialize_movement_test(ModuleInitializationLevel p_level) {
-	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
-		return;
-	}
-
-	ClassDB::register_class<MovementTest>();
-}
-
-void initialize_star(ModuleInitializationLevel p_level){
-	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
-		return;
-	}
-	ClassDB::register_class<Star>();
+	ClassDB::register_class<Coin>();
 }
 
 void initialize_player(ModuleInitializationLevel p_level){
@@ -49,12 +34,26 @@ void initialize_timelabel(ModuleInitializationLevel p_level){
 	ClassDB::register_class<TimeLabel>();
 }
 
+void initialize_ballonship(ModuleInitializationLevel p_level){
+	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
+		return;
+	}
+	ClassDB::register_class<BallonShip>();
+}
+
+void initialize_superjump(ModuleInitializationLevel p_level){
+	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
+		return;
+	}
+	ClassDB::register_class<SuperJump>();
+}
+
 void initialize_types(ModuleInitializationLevel p_level){
-    initialize_example_module(p_level);
-    initialize_movement_test(p_level);
-	initialize_star(p_level);
+	initialize_coin(p_level);
 	initialize_player(p_level);
 	initialize_timelabel(p_level);
+	initialize_ballonship(p_level);
+	initialize_superjump(p_level);
 }
 
 void uninitialize_types(ModuleInitializationLevel p_level){
@@ -65,7 +64,7 @@ void uninitialize_types(ModuleInitializationLevel p_level){
 
 extern "C" {
 // Initialization.
-GDExtensionBool GDE_EXPORT example_library_init(GDExtensionInterfaceGetProcAddress p_get_proc_address, const GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization) {
+GDExtensionBool GDE_EXPORT leap_of_stones_library(GDExtensionInterfaceGetProcAddress p_get_proc_address, const GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization) {
 	godot::GDExtensionBinding::InitObject init_obj(p_get_proc_address, p_library, r_initialization);
 
 	init_obj.register_initializer(initialize_types);

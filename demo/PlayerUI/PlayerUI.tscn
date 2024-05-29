@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://d28rw3f1tiypu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rhsh4"]
+font_size = 26
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xt2cs"]
+font_size = 24
+font_color = Color(1, 0.215389, 0.727391, 1)
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Skor" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 344.0
+offset_bottom = 60.0
+text = "Skor: 0"
+label_settings = SubResource("LabelSettings_rhsh4")
+
+[node name="TimeLabel" type="TimeLabel" parent="."]
+layout_mode = 0
+offset_left = 1744.0
+offset_top = 15.0
+offset_right = 1807.0
+offset_bottom = 49.0
+text = "00:00"
+label_settings = SubResource("LabelSettings_xt2cs")

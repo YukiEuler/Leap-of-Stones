@@ -14,6 +14,7 @@ class Player : public CharacterBody3D {
 private:
 	int point;
 	int speed;
+	int jump;
 	bool off_menu;
 
 protected:
@@ -26,6 +27,10 @@ public:
 	int get_point();
 
 	void set_point(int point);
+
+	int get_jump();
+
+	void set_jump(int jump);
 
 	void increment_point();
 };

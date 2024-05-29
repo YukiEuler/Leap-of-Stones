@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://qvb8iqujvby7"]
+
+[ext_resource type="PackedScene" uid="uid://ctcab2p8qxf1s" path="res://Asset/PrefabsStatic/FloatingIsland/FloatingIslandType1.glb" id="1_8qnae"]
+[ext_resource type="Material" uid="uid://30mvq5ih2gkh" path="res://Asset/Material/GlobalMaterial.tres" id="2_yt3tn"]
+[ext_resource type="ArrayMesh" uid="uid://bd1ta4e8do76c" path="res://Asset/PrefabsStatic/Grass/Grass.tres" id="3_vbkot"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_a0umk"]
+transform_format = 1
+instance_count = 12
+mesh = ExtResource("3_vbkot")
+buffer = PackedFloat32Array(0.574121, 0, -0.819991, 1.44217, 0, 1.001, 0, -0.211071, 0.819991, 0, 0.574121, -0.368482, 0.574121, 0, -0.819991, 2.34651, 0, 1.001, 0, -0.211071, 0.819991, 0, 0.574121, -0.883248, -0.819991, 0, -0.574121, -5.23308, 0, 1.001, 0, -0.211071, 0.574121, 0, -0.819991, -2.07183, 0.574121, 0, -0.819991, -0.118089, 0, 1.001, 0, -0.211071, 0.819991, 0, 0.574121, -2.30514, -0.819991, 0, -0.574121, -6.01316, 0, 1.001, 0, -0.211071, 0.574121, 0, -0.819991, -2.79199, -0.819991, 0, -0.574121, -2.18776, 0, 1.001, 0, -0.211071, 0.574121, 0, -0.819991, 5.936, 0.574121, 0, -0.819991, 6.034, 0, 1.001, 0, -0.211071, 0.819991, 0, 0.574121, 1.41238, 0.574121, 0, -0.819991, 0.982739, 0, 1.001, 0, -0.211071, 0.819991, 0, 0.574121, -6.7021, -0.819991, 0, -0.574121, -1.21966, 0, 1.001, 0, -0.211071, 0.574121, 0, -0.819991, 3.01001, -0.819991, 0, -0.574121, -2.28179, 0, 1.001, 0, -0.211071, 0.574121, 0, -0.819991, -0.677433, 0.574121, 0, -0.819991, 4.46292, 0, 1.001, 0, -0.211071, 0.819991, 0, 0.574121, 1.06381, -0.819991, 0, -0.574121, -2.99112, 0, 1.001, 0, -0.211071, 0.574121, 0, -0.819991, -3.61942)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2gtqn"]
+points = PackedVector3Array(-252.041, 910.468, 80.409, -57.5409, -860.96, 38.5095, 524.961, -151.891, -2184.44, 923.34, 38.5637, 120.452, -313.717, 2.00707, -2209.94, 465.856, 842.315, -1078.39, -752.409, -84.2295, 79.4806, -87.7395, -494.657, -2141.75, 432.816, -779.037, 38.5095, -277.218, 723.811, -1149.91, 182.364, 273.893, -2323.25, 350.978, 937.367, 79.2245, 705.076, -298.953, -1676.91, -711.574, 364.992, 38.5095, -384.557, -615.553, 120.452, 923.34, -206.843, -2.46155, -690.214, 115.121, -734.727, 64.9643, 870.466, -1074.47, 180.151, -383.126, -2301.85, 408.459, -494.409, -1683.47, -670.739, -288.585, 38.5095, -203.673, -305.872, -2262.16, -233.47, 599.315, -1560.52, -52.7163, 195.885, -2365.32, 64.9643, -860.96, 120.452, 339.926, 78.1154, -2365.99, -356.083, 843.26, -268.689, 706.609, -224.144, -1678.08, -464.997, 39.8798, -1755.5, 797.27, -384.43, -339.702, 25.9881, -116.733, -2436.01, 923.34, 38.5637, -2.46155)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_js3a1"]
+size = Vector2(8.27, 11.7)
+
+[node name="FloatingIslandType1" instance=ExtResource("1_8qnae")]
+
+[node name="FloatingIslandType2" parent="." index="0"]
+material_override = ExtResource("2_yt3tn")
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0763556, 0.511465)
+multimesh = SubResource("MultiMesh_a0umk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(-0.01, 7.54979e-10, -7.54979e-10, -7.54979e-10, 0, 0.01, 7.54979e-10, 0.01, 0, 0, -1, 0)
+shape = SubResource("ConvexPolygonShape3D_2gtqn")
+
+[node name="GrassSpawn" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(0.173683, 0, 0.984802, 0, 1, 0, -0.984802, 0, 0.173683, -0.750057, -0.211071, -0.971931)
+visible = false
+mesh = SubResource("PlaneMesh_js3a1")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cph4d81vhk207"]
+
+[ext_resource type="PackedScene" uid="uid://d1o8rpmquil6c" path="res://Asset/PrefabsStatic/House/House.glb" id="1_mqrqe"]
+[ext_resource type="Material" uid="uid://30mvq5ih2gkh" path="res://Asset/Material/GlobalMaterial.tres" id="2_rf11d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6nfi0"]
+size = Vector3(3.985, 4, 4.16)
+
+[node name="House" instance=ExtResource("1_mqrqe")]
+
+[node name="House" parent="." index="0"]
+material_override = ExtResource("2_rf11d")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_6nfi0")

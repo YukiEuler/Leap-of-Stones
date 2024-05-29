@@ -30,7 +30,7 @@ int Player:: get_point(){
 
 void Player:: set_point(int point){
 	this->point = point;
-	Node* node = get_node_internal("PlayerUI/Skor");
+	Node* node = get_node_internal("Player/PlayerUI/Skor");
 	if (node){
 		Label* label = dynamic_cast<Label*>(node);	
 		if (label){
@@ -39,6 +39,15 @@ void Player:: set_point(int point){
 		}
 	}
 }
+
+int Player:: get_jump(){
+	return this->jump;
+}
+
+void Player:: set_jump(int jump){
+	this->jump = jump;
+}
+
 
 void Player:: increment_point(){
 	set_point(get_point() + 1);

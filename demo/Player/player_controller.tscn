@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmo5vfkwthtqs"]
+
+[ext_resource type="PackedScene" uid="uid://dsgst3sbrwj3i" path="res://Player/Model/player.tscn" id="1_7pt3t"]
+[ext_resource type="Script" path="res://Player/Scipt/player_controller.gd" id="1_i20eb"]
+[ext_resource type="Script" path="res://Player/Scipt/SpringArm3D.gd" id="3_hsv7t"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sybdk"]
+radius = 0.2
+height = 0.647832
+
+[node name="PlayerController" type="Player" groups=["player"]]
+script = ExtResource("1_i20eb")
+
+[node name="Player" parent="." instance=ExtResource("1_7pt3t")]
+transform = Transform3D(0.355, 0, 0, 0, 0.355, 0, 0, 0, 0.355, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.317484, 0.0249918)
+shape = SubResource("CapsuleShape3D_sybdk")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.341234, 0)
+spring_length = 3.0
+margin = 0.5
+script = ExtResource("3_hsv7t")
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
