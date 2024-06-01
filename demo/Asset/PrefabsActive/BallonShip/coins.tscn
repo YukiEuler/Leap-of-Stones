@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmdhk1rjiu62i"]
+[gd_scene load_steps=9 format=3 uid="uid://bmdhk1rjiu62i"]
 
 [ext_resource type="Material" uid="uid://30mvq5ih2gkh" path="res://Asset/Material/GlobalMaterial.tres" id="2_ukhdq"]
 
@@ -39,18 +39,47 @@ shadow_mesh = SubResource("ArrayMesh_ovl6f")
 [sub_resource type="SphereShape3D" id="SphereShape3D_ngwjn"]
 radius = 0.182249
 
+[sub_resource type="Animation" id="Animation_4dlyx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Coins:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.74846e-07, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_xafgf"]
 resource_name = "muter"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Coins:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.74846e-07, 0), Vector3(0, 6.28319, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_seweu"]
 _data = {
+"RESET": SubResource("Animation_4dlyx"),
 "muter": SubResource("Animation_xafgf")
 }
 
 [node name="Coins" type="Coin"]
 
 [node name="Coins" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 5.97972e-08, 0, 0.5, 0, -8.74228e-08, 0, 0.342, 0, 0, 0)
+transform = Transform3D(0.5, 0, 5.97973e-08, 0, 0.5, 0, -8.7423e-08, 0, 0.342, 0, 0, 0)
 material_override = ExtResource("2_ukhdq")
 mesh = SubResource("ArrayMesh_8tpls")
 skeleton = NodePath("")
@@ -58,7 +87,8 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ngwjn")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Muter" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_seweu")
 }

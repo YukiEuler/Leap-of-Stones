@@ -3,6 +3,7 @@
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/classes/engine.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
+#include <godot_cpp/classes/animation_player.hpp>
 
 using namespace godot;
 
@@ -20,6 +21,16 @@ Coin::Coin() {
 
 Coin::~Coin() {
 	// Add your cleanup here.
+}
+
+void Coin::_process(double delta){
+    Node* node = get_node_internal("%Muter");
+    if (node){
+        AnimationPlayer* animasi = dynamic_cast<AnimationPlayer*>(node);
+        if (animasi){
+            animasi->play("muter");
+        }
+    }
 }
 
 void Coin::_on_area_3d_body_entered(Node* body) {

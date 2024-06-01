@@ -21,8 +21,8 @@ public:
 	SuperJump();
 	~SuperJump();
 
-	void _on_body_entered(Node* body);
-    void _on_body_exited(Node* body);
+	void _enter_super_jump(Node* body);
+    void _exit_super_jump(Node* body);
 };
 
 }

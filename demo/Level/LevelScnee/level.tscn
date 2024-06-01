@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://be12xfgjkerev" path="res://Asset/Material/Texture/animestyled_hdr.hdr" id="6_ghy3n"]
 [ext_resource type="PackedScene" uid="uid://dfa2oivki4bsc" path="res://Asset/PrefabsActive/BallonShip/ballon_ship.tscn" id="7_3bmno"]
 [ext_resource type="Script" path="res://Level/LevelScnee/Script/BoundaryArea.gd" id="10_288n0"]
+[ext_resource type="Script" path="res://Level/LevelScnee/SuperJump.gd" id="12_24nxl"]
 [ext_resource type="PackedScene" uid="uid://bmdhk1rjiu62i" path="res://Asset/PrefabsActive/BallonShip/coins.tscn" id="12_s6edw"]
-[ext_resource type="Script" path="res://Level/LevelScnee/SuperJump.gd" id="13_hh0es"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0dj7k"]
 panorama = ExtResource("6_ghy3n")
@@ -112,7 +112,7 @@ transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -5.61292, 0, -1.7796
 transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, 2.70367, 0, 3.43715)
 
 [node name="FloatingIslandType9" parent="Platformmer" instance=ExtResource("3_vfrvu")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.11276, 0.561571, -28.3169)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.11276, 0.561571, -26.1096)
 
 [node name="Tree6" parent="Platformmer/FloatingIslandType9" instance=ExtResource("1_0afq7")]
 transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, 3.15731, 0, -4.72824)
@@ -305,9 +305,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 [node name="BallonShip" parent="Path3D/PathFollow3D/Ship" instance=ExtResource("7_3bmno")]
 transform = Transform3D(0.535, -1.40062e-09, -5.58794e-09, 2.72848e-10, 0.535, -4.36557e-10, 9.31323e-09, 2.61934e-10, 0.535, 0.103016, 0.078872, -0.814718)
 
-[node name="SuperJump" type="Area3D" parent="."]
+[node name="SuperJump" type="SuperJump" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.301883, 1.04057, -5.55964)
-script = ExtResource("13_hh0es")
+script = ExtResource("12_24nxl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SuperJump"]
 shape = SubResource("SphereShape3D_r1fgr")
@@ -315,14 +315,23 @@ shape = SubResource("SphereShape3D_r1fgr")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SuperJump"]
 mesh = SubResource("SphereMesh_ly3ux")
 
-[node name="SuperJump2" type="Area3D" parent="."]
+[node name="SuperJump2" type="SuperJump" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5836, 1.81926, -6.26071)
-script = ExtResource("13_hh0es")
+script = ExtResource("12_24nxl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SuperJump2"]
 shape = SubResource("SphereShape3D_r1fgr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SuperJump2"]
+mesh = SubResource("SphereMesh_ly3ux")
+
+[node name="Teleporter" type="Teleporter" parent="."]
+transform = Transform3D(-0.287628, 0.0210768, -0.95751, 0, -0.999758, -0.0220068, -0.957742, -0.00632977, 0.287558, -1.78306, 0.0974431, -29.0823)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Teleporter"]
+shape = SubResource("SphereShape3D_r1fgr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Teleporter"]
 mesh = SubResource("SphereMesh_ly3ux")
 
 [node name="Coins" parent="." instance=ExtResource("12_s6edw")]
@@ -349,8 +358,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4172, 1.23296, -19.1581)
 [node name="Coins8" parent="." instance=ExtResource("12_s6edw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.38105, 7.0213, -6.38117)
 
+[node name="Coins9" parent="." instance=ExtResource("12_s6edw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0291, 2.19817, -23.6112)
+
+[node name="Coins10" parent="." instance=ExtResource("12_s6edw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444807, 1.05233, -25.6959)
+
 [connection signal="body_entered" from="BoundaryArea" to="BoundaryArea" method="_on_body_entered"]
-[connection signal="body_entered" from="SuperJump" to="SuperJump" method="_on_body_entered"]
-[connection signal="body_exited" from="SuperJump" to="SuperJump" method="_on_body_exited"]
-[connection signal="body_entered" from="SuperJump2" to="SuperJump2" method="_on_body_entered"]
-[connection signal="body_exited" from="SuperJump2" to="SuperJump2" method="_on_body_exited"]
+[connection signal="body_entered" from="Teleporter" to="Teleporter" method="_on_area_3d_entered"]

@@ -67,5 +67,22 @@ func _physics_process(delta):
 func _process(_delta):
 	spring_arm.position = position
 
-	#
 
+#func _on_body_entered(body):
+	#pass # Replace with function body.
+#
+#
+#func _on_body_exited(body):
+	#pass # Replace with function body.
+
+
+func _on_body_entered(body):
+	pass # Replace with function body.
+
+
+func _exit_super_jump(body):
+	pass # Replace with function body.
+
+
+func _enter_super_jump(body):
+	pass # Replace with function body.

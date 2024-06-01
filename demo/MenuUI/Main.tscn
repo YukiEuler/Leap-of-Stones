@@ -1,0 +1,117 @@
+[gd_scene load_steps=7 format=3 uid="uid://cva0fb4f5wt5c"]
+
+[ext_resource type="Texture2D" uid="uid://b3rd1rd6c0gyq" path="res://MenuUI/bg.png" id="1_4kyit"]
+[ext_resource type="FontFile" uid="uid://ymwee4aafx34" path="res://PlayerUI/BebasNeue-Regular.ttf" id="1_gt8hw"]
+[ext_resource type="Texture2D" uid="uid://c1naon1jmpbcb" path="res://MenuUI/play-button.svg" id="2_wktrb"]
+[ext_resource type="Texture2D" uid="uid://gq2chftpnfk2" path="res://MenuUI/cancel.svg" id="4_sekrk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dx7d"]
+bg_color = Color(0.282353, 0.384314, 0.952941, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hdnf"]
+bg_color = Color(0.282353, 0.384314, 0.952941, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackGround" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_4kyit")
+expand_mode = 1
+
+[node name="Judul" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.202257
+anchor_top = 0.135802
+anchor_right = 0.793403
+anchor_bottom = 0.33179
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1dx7d")
+metadata/_edit_use_anchors_ = true
+
+[node name="JudulGame" type="Label" parent="Judul"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.5
+offset_top = -42.0
+offset_right = 169.5
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_gt8hw")
+theme_override_font_sizes/font_size = 70
+text = "LEAP OF STONES"
+
+[node name="PanelPlay" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.338542
+anchor_top = 0.621914
+anchor_right = 0.425347
+anchor_bottom = 0.776234
+offset_top = -3.05176e-05
+offset_bottom = 3.05176e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_7hdnf")
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayButton" type="TextureButton" parent="PanelPlay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12
+anchor_top = 0.11
+anchor_right = 0.9
+anchor_bottom = 0.920001
+action_mode = 0
+texture_normal = ExtResource("2_wktrb")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelClose" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.552083
+anchor_top = 0.621914
+anchor_right = 0.638889
+anchor_bottom = 0.776234
+offset_top = -3.05176e-05
+offset_bottom = 3.05176e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_7hdnf")
+metadata/_edit_use_anchors_ = true
+
+[node name="CloseButton" type="TextureButton" parent="PanelClose"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17
+anchor_top = 0.149999
+anchor_right = 0.84
+anchor_bottom = 0.850001
+action_mode = 0
+texture_normal = ExtResource("4_sekrk")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true

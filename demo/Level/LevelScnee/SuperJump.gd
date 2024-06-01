@@ -12,10 +12,18 @@ func _process(delta):
 
 
 func _on_body_entered(body):
+	pass
+
+
+func _on_body_exited(body):
+	pass
+
+
+func _enter_super_jump(body):
 	if body.is_in_group("player"):
 		body.jump_speed = 12
 
 
-func _on_body_exited(body):
+func _exit_super_jump(body):
 	if body.is_in_group("player"):
 		body.jump_speed = 5

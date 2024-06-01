@@ -18,6 +18,7 @@ public:
 	~Coin();
 
 	void _on_area_3d_body_entered(Node* body);
+	void _process(double delta) override;
 };
 
 }

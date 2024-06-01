@@ -1,0 +1,182 @@
+[gd_scene load_steps=9 format=3 uid="uid://bmlcjxfduseb7"]
+
+[ext_resource type="Texture2D" uid="uid://c1naon1jmpbcb" path="res://MenuUI/play-button.svg" id="1_1wo7f"]
+[ext_resource type="Texture2D" uid="uid://b3rd1rd6c0gyq" path="res://MenuUI/bg.png" id="1_ps5ih"]
+[ext_resource type="FontFile" uid="uid://ymwee4aafx34" path="res://PlayerUI/BebasNeue-Regular.ttf" id="2_2d6to"]
+[ext_resource type="Texture2D" uid="uid://gq2chftpnfk2" path="res://MenuUI/cancel.svg" id="2_giim3"]
+[ext_resource type="Texture2D" uid="uid://cev4g6t7o34t5" path="res://PauseMenu/backward-time.svg" id="3_06760"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ww4js"]
+bg_color = Color(0.282353, 0.384314, 0.952941, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y865f"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gk5f7"]
+bg_color = Color(0.282353, 0.384314, 0.952941, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackGround" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_ps5ih")
+expand_mode = 1
+
+[node name="PanelPlay" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.264757
+anchor_top = 0.462963
+anchor_right = 0.351563
+anchor_bottom = 0.617284
+offset_top = -3.05176e-05
+offset_bottom = 3.05176e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_ww4js")
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayButton" type="TextureButton" parent="PanelPlay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.11
+anchor_top = 0.11
+anchor_right = 0.89
+anchor_bottom = 0.920001
+action_mode = 0
+texture_normal = ExtResource("1_1wo7f")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContinue" type="Panel" parent="PanelPlay"]
+layout_mode = 0
+anchor_left = -0.13
+anchor_top = -0.590001
+anchor_right = 1.1
+anchor_bottom = -0.19
+theme_override_styles/panel = SubResource("StyleBoxFlat_y865f")
+metadata/_edit_use_anchors_ = true
+
+[node name="ContinueLabel" type="Label" parent="PanelPlay/PanelContinue"]
+layout_mode = 0
+anchor_right = 1.01626
+anchor_bottom = 0.95
+theme_override_colors/font_color = Color(0.282353, 0.384314, 0.952941, 1)
+theme_override_fonts/font = ExtResource("2_2d6to")
+theme_override_font_sizes/font_size = 35
+text = "continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelReset" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.453125
+anchor_top = 0.462963
+anchor_right = 0.539931
+anchor_bottom = 0.617283
+offset_top = -3.05176e-05
+offset_bottom = 3.05176e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_gk5f7")
+metadata/_edit_use_anchors_ = true
+
+[node name="ResetButton" type="TextureButton" parent="PanelReset"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09
+anchor_top = 0.11
+anchor_right = 0.9
+anchor_bottom = 0.910004
+action_mode = 0
+texture_normal = ExtResource("3_06760")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelResetLabel" type="Panel" parent="PanelReset"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.13
+anchor_top = -0.590001
+anchor_right = 1.1
+anchor_bottom = -0.19
+theme_override_styles/panel = SubResource("StyleBoxFlat_y865f")
+metadata/_edit_use_anchors_ = true
+
+[node name="ResetLabel" type="Label" parent="PanelReset/PanelResetLabel"]
+layout_mode = 0
+anchor_right = 1.01626
+anchor_bottom = 0.95
+theme_override_colors/font_color = Color(0.282353, 0.384314, 0.952941, 1)
+theme_override_fonts/font = ExtResource("2_2d6to")
+theme_override_font_sizes/font_size = 35
+text = "reset"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelClose" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.633681
+anchor_top = 0.462963
+anchor_right = 0.720486
+anchor_bottom = 0.617284
+offset_top = -3.05176e-05
+offset_right = 6.10352e-05
+offset_bottom = 3.05176e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_gk5f7")
+metadata/_edit_use_anchors_ = true
+
+[node name="CloseButton" type="TextureButton" parent="PanelClose"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17
+anchor_top = 0.149999
+anchor_right = 0.84
+anchor_bottom = 0.850001
+action_mode = 0
+texture_normal = ExtResource("2_giim3")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelQuit" type="Panel" parent="PanelClose"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.13
+anchor_top = -0.590001
+anchor_right = 1.1
+anchor_bottom = -0.19
+theme_override_styles/panel = SubResource("StyleBoxFlat_y865f")
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitLabel" type="Label" parent="PanelClose/PanelQuit"]
+layout_mode = 0
+anchor_right = 1.01626
+anchor_bottom = 0.95
+theme_override_colors/font_color = Color(0.282353, 0.384314, 0.952941, 1)
+theme_override_fonts/font = ExtResource("2_2d6to")
+theme_override_font_sizes/font_size = 35
+text = "quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

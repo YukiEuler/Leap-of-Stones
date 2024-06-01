@@ -1,0 +1,281 @@
+[gd_scene load_steps=14 format=3 uid="uid://cifopyqhu03bg"]
+
+[ext_resource type="Texture2D" uid="uid://b3rd1rd6c0gyq" path="res://MenuUI/bg.png" id="1_t722e"]
+[ext_resource type="FontFile" uid="uid://ymwee4aafx34" path="res://PlayerUI/BebasNeue-Regular.ttf" id="2_xq5jv"]
+[ext_resource type="Texture2D" uid="uid://cev4g6t7o34t5" path="res://PauseMenu/backward-time.svg" id="3_xfvew"]
+[ext_resource type="Texture2D" uid="uid://gq2chftpnfk2" path="res://MenuUI/cancel.svg" id="4_qbmeh"]
+[ext_resource type="Texture2D" uid="uid://bsg25s72oxyar" path="res://PlayerUI/coins.svg" id="5_ex5kt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2biu"]
+bg_color = Color(0.282353, 0.384314, 0.952941, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjscr"]
+bg_color = Color(0.282353, 0.384314, 0.952941, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sj0yw"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cuwgy"]
+bg_color = Color(0.282353, 0.384314, 0.952941, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lujmw"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aema6"]
+bg_color = Color(0.977109, 0.674569, 7.70092e-07, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cc1yu"]
+bg_color = Color(0.282353, 0.384314, 0.952941, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jywy6"]
+font_size = 24
+font_color = Color(1, 0.215389, 0.727391, 1)
+
+[node name="FinalScore" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackGround" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_t722e")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Judul" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.202257
+anchor_top = 0.135802
+anchor_right = 0.793403
+anchor_bottom = 0.33179
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m2biu")
+metadata/_edit_use_anchors_ = true
+
+[node name="JudulGame" type="Label" parent="Judul"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.5
+offset_top = -42.0
+offset_right = 169.5
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_xq5jv")
+theme_override_font_sizes/font_size = 70
+text = "LEAP OF STONES"
+
+[node name="PanelReset" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3125
+anchor_top = 0.621914
+anchor_right = 0.399306
+anchor_bottom = 0.776234
+offset_top = -3.05176e-05
+offset_bottom = 3.05176e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_kjscr")
+metadata/_edit_use_anchors_ = true
+
+[node name="ResetButton" type="TextureButton" parent="PanelReset"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09
+anchor_top = 0.11
+anchor_right = 0.9
+anchor_bottom = 0.910004
+action_mode = 0
+texture_normal = ExtResource("3_xfvew")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelResetLabel" type="Panel" parent="PanelReset"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.13
+anchor_top = -0.590001
+anchor_right = 1.1
+anchor_bottom = -0.19
+theme_override_styles/panel = SubResource("StyleBoxFlat_sj0yw")
+metadata/_edit_use_anchors_ = true
+
+[node name="ResetLabel" type="Label" parent="PanelReset/PanelResetLabel"]
+layout_mode = 0
+anchor_right = 1.01626
+anchor_bottom = 0.95
+theme_override_colors/font_color = Color(0.282353, 0.384314, 0.952941, 1)
+theme_override_fonts/font = ExtResource("2_xq5jv")
+theme_override_font_sizes/font_size = 35
+text = "reset"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelClose" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.611979
+anchor_top = 0.621914
+anchor_right = 0.698785
+anchor_bottom = 0.776234
+offset_top = -3.05176e-05
+offset_right = 6.10352e-05
+offset_bottom = 3.05176e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_cuwgy")
+metadata/_edit_use_anchors_ = true
+
+[node name="CloseButton" type="TextureButton" parent="PanelClose"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17
+anchor_top = 0.149999
+anchor_right = 0.84
+anchor_bottom = 0.850001
+action_mode = 0
+texture_normal = ExtResource("4_qbmeh")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelQuit" type="Panel" parent="PanelClose"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.13
+anchor_top = -0.590001
+anchor_right = 1.1
+anchor_bottom = -0.19
+theme_override_styles/panel = SubResource("StyleBoxFlat_lujmw")
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitLabel" type="Label" parent="PanelClose/PanelQuit"]
+layout_mode = 0
+anchor_right = 1.01626
+anchor_bottom = 0.95
+theme_override_colors/font_color = Color(0.282353, 0.384314, 0.952941, 1)
+theme_override_fonts/font = ExtResource("2_xq5jv")
+theme_override_font_sizes/font_size = 35
+text = "quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerSkorBox" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.263021
+anchor_top = 0.367284
+anchor_right = 0.446181
+anchor_bottom = 0.466049
+theme_override_styles/panel = SubResource("StyleBoxFlat_aema6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Coin" type="TextureRect" parent="PlayerSkorBox"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -25.0
+offset_right = 62.0
+offset_bottom = 25.0
+grow_vertical = 2
+texture = ExtResource("5_ex5kt")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="PlayerSkorBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36019
+anchor_top = 0.15625
+anchor_right = 0.701422
+anchor_bottom = 0.9375
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_xq5jv")
+theme_override_font_sizes/font_size = 41
+text = "SKOR:"
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerTimeBox" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.565972
+anchor_top = 0.367284
+anchor_right = 0.749132
+anchor_bottom = 0.466049
+theme_override_styles/panel = SubResource("StyleBoxFlat_cc1yu")
+metadata/_edit_use_anchors_ = true
+
+[node name="TimeLabel" type="TimeLabel" parent="PlayerTimeBox"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 15.0
+offset_right = 203.0
+offset_bottom = 49.0
+text = "00:00"
+label_settings = SubResource("LabelSettings_jywy6")
+
+[node name="WaktuLabel" type="Label" parent="PlayerTimeBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.303318
+anchor_top = 0.140625
+anchor_right = 0.744076
+anchor_bottom = 0.890625
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_xq5jv")
+theme_override_font_sizes/font_size = 40
+text = "TIME:"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="PlayerTimeBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0616114
+anchor_top = 0.171875
+anchor_right = 0.251185
+anchor_bottom = 0.796875
+expand_mode = 1
+metadata/_edit_use_anchors_ = true

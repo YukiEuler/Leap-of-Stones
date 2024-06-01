@@ -7,8 +7,8 @@
 using namespace godot;
 
 void SuperJump::_bind_methods() {
-    ClassDB::bind_method(D_METHOD("_on_area_3d_body_entered", "body"), &SuperJump::_on_body_entered);
-    ClassDB::bind_method(D_METHOD("_on_area_3d_body_exited", "body"), &SuperJump::_on_body_exited);
+    ClassDB::bind_method(D_METHOD("_enter_super_jump", "body"), &SuperJump::_enter_super_jump);
+    ClassDB::bind_method(D_METHOD("_exit_super_jump", "body"), &SuperJump::_exit_super_jump);
 }
 
 SuperJump::SuperJump() {
@@ -16,15 +16,15 @@ SuperJump::SuperJump() {
 	if (Engine::get_singleton()->is_editor_hint()){
 		set_process_mode(Node::ProcessMode::PROCESS_MODE_DISABLED);
 	}
-	connect("body_entered", Callable(this, "_on_body_entered"));
-    connect("body_exited", Callable(this, "_on_body_exited"));
+	connect("body_entered", Callable(this, "_enter_super_jump"));
+    connect("body_exited", Callable(this, "_exit_super_jump"));
 }
 
 SuperJump::~SuperJump() {
 	// Add your cleanup here.
 }
 
-void SuperJump::_on_body_entered(Node* body) {
+void SuperJump::_enter_super_jump(Node* body) {
     if (body->is_in_group("player")){
         Player* player = dynamic_cast<Player*>(body);
         if (player){
@@ -33,7 +33,7 @@ void SuperJump::_on_body_entered(Node* body) {
     }
 }
 
-void SuperJump::_on_body_exited(Node* body){
+void SuperJump::_exit_super_jump(Node* body){
     if (body->is_in_group("player")){
         Player* player = dynamic_cast<Player*>(body);
         if (player){

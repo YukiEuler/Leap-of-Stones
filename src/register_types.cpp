@@ -5,6 +5,7 @@
 #include "timelabel.h"
 #include "ballonship.h"
 #include "superjump.h"
+#include "teleporter.h"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
@@ -48,12 +49,20 @@ void initialize_superjump(ModuleInitializationLevel p_level){
 	ClassDB::register_class<SuperJump>();
 }
 
+void initialize_teleporter(ModuleInitializationLevel p_level){
+	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
+		return;
+	}
+	ClassDB::register_class<Teleporter>();
+}
+
 void initialize_types(ModuleInitializationLevel p_level){
 	initialize_coin(p_level);
 	initialize_player(p_level);
 	initialize_timelabel(p_level);
 	initialize_ballonship(p_level);
 	initialize_superjump(p_level);
+	initialize_teleporter(p_level);
 }
 
 void uninitialize_types(ModuleInitializationLevel p_level){

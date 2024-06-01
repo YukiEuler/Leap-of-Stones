@@ -34,7 +34,7 @@ void Player:: set_point(int point){
 	if (node){
 		Label* label = dynamic_cast<Label*>(node);	
 		if (label){
-			std::string text = "Skor: " + std::to_string(point);
+			std::string text = std::to_string(point) + "/10";
 			label->set_text(text.c_str());
 		}
 	}
@@ -47,7 +47,6 @@ int Player:: get_jump(){
 void Player:: set_jump(int jump){
 	this->jump = jump;
 }
-
 
 void Player:: increment_point(){
 	set_point(get_point() + 1);
