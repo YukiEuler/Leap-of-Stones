@@ -8,6 +8,7 @@ using namespace godot;
 
 void Player::_bind_methods() {
     ClassDB::bind_method(D_METHOD("increment_point"), &Player::increment_point);
+	ClassDB::add_property("Player", PropertyInfo(Variant::BOOL, "end_game"), "set_end_game", "get_end_game");
 }
 
 Player::Player() {
@@ -17,7 +18,7 @@ Player::Player() {
 	}
 	point = 0;
 	speed = NORMAL_SPEED;
-	off_menu = false;
+	end_game = false;
 }
 
 Player::~Player() {
@@ -50,4 +51,12 @@ void Player:: set_jump(int jump){
 
 void Player:: increment_point(){
 	set_point(get_point() + 1);
+}
+
+bool Player::get_end_game() {
+	return end_game;
+}
+
+void Player::set_end_game(bool value) {
+	end_game = value;
 }

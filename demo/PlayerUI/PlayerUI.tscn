@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d28rw3f1tiypu"]
+[gd_scene load_steps=10 format=3 uid="uid://d28rw3f1tiypu"]
 
 [ext_resource type="Texture2D" uid="uid://bsg25s72oxyar" path="res://PlayerUI/coins.svg" id="1_rg05j"]
 [ext_resource type="FontFile" uid="uid://ymwee4aafx34" path="res://PlayerUI/BebasNeue-Regular.ttf" id="2_3n4n1"]
+[ext_resource type="Texture2D" uid="uid://inwq5wpc502v" path="res://PlayerUI/stopwatch.svg" id="3_vaudm"]
 [ext_resource type="Texture2D" uid="uid://dt8l2g30jdp5c" path="res://PlayerUI/pause-button.svg" id="4_linhj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2ojs"]
@@ -25,7 +26,6 @@ border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_xt2cs"]
 font_size = 24
-font_color = Color(1, 0.215389, 0.727391, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5ugo"]
 bg_color = Color(0.282353, 0.384314, 0.952941, 1)
@@ -126,6 +126,7 @@ anchor_left = 0.0616114
 anchor_top = 0.171875
 anchor_right = 0.251185
 anchor_bottom = 0.796875
+texture = ExtResource("3_vaudm")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 

@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://wc0kl1fxhl0q"]
+
+[ext_resource type="Texture2D" uid="uid://d04wcjtbo7yr" path="res://Asset/Material/Texture/UniversalTexture.png" id="1_wmm0c"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v88kr"]
+frequency = 0.0022
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_736vx"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_v88kr")
+
+[resource]
+cull_mode = 2
+albedo_color = Color(0.454524, 0.454524, 0.454524, 1)
+albedo_texture = ExtResource("1_wmm0c")
+normal_enabled = true
+normal_scale = -2.42
+normal_texture = SubResource("NoiseTexture2D_736vx")
+point_size = 2.3
+proximity_fade_distance = 0.0
+distance_fade_max_distance = 0.0

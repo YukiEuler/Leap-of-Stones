@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://ddgjhqgv5ueiv"]
+[gd_scene load_steps=16 format=3 uid="uid://ddgjhqgv5ueiv"]
 
+[ext_resource type="Script" path="res://Asset/PrefabsActive/Gapura/gapura.gd" id="1_p2wq3"]
 [ext_resource type="Material" uid="uid://30mvq5ih2gkh" path="res://Asset/Material/GlobalMaterial.tres" id="2_v0l3y"]
 [ext_resource type="Shader" path="res://Asset/PrefabsActive/Gapura/gapura.gdshader" id="3_f6r0y"]
 
@@ -78,6 +79,7 @@ size = Vector2(2, 2.88)
 subdivide_width = 2
 
 [node name="Gapura" type="Area3D"]
+script = ExtResource("1_p2wq3")
 
 [node name="Gapura" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -92,3 +94,5 @@ shape = SubResource("ConcavePolygonShape3D_0p674")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.85399, 0.531302)
 mesh = SubResource("PlaneMesh_ltxri")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

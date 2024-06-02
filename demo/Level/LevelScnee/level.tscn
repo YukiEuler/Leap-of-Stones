@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b7w0vh54kly3j"]
+[gd_scene load_steps=26 format=3 uid="uid://b7w0vh54kly3j"]
 
 [ext_resource type="PackedScene" uid="uid://brtgyhr5pcan5" path="res://Asset/PrefabsStatic/Tree/tree.tscn" id="1_0afq7"]
 [ext_resource type="PackedScene" uid="uid://cmo5vfkwthtqs" path="res://Player/player_controller.tscn" id="1_0rrw3"]
@@ -11,8 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://be12xfgjkerev" path="res://Asset/Material/Texture/animestyled_hdr.hdr" id="6_ghy3n"]
 [ext_resource type="PackedScene" uid="uid://dfa2oivki4bsc" path="res://Asset/PrefabsActive/BallonShip/ballon_ship.tscn" id="7_3bmno"]
 [ext_resource type="Script" path="res://Level/LevelScnee/Script/BoundaryArea.gd" id="10_288n0"]
-[ext_resource type="Script" path="res://Level/LevelScnee/SuperJump.gd" id="12_24nxl"]
 [ext_resource type="PackedScene" uid="uid://bmdhk1rjiu62i" path="res://Asset/PrefabsActive/BallonShip/coins.tscn" id="12_s6edw"]
+[ext_resource type="PackedScene" uid="uid://d3r3m8j4taau3" path="res://Asset/PrefabsActive/JumpBooster/jump_booster.tscn" id="14_3acf6"]
+[ext_resource type="PackedScene" uid="uid://kop7qstrtj7u" path="res://Asset/PrefabsActive/Teleport/teleport.tscn" id="14_grpl4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0dj7k"]
 panorama = ExtResource("6_ghy3n")
@@ -71,14 +72,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_r1fgr"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7p1a"]
-albedo_color = Color(0.623529, 1, 1, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_ly3ux"]
-material = SubResource("StandardMaterial3D_q7p1a")
 
 [node name="Level" type="Node3D"]
 
@@ -297,42 +290,13 @@ curve = SubResource("Curve3D_g27vk")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
 unique_name_in_owner = true
-transform = Transform3D(-0.0550801, -0.0156343, -0.998335, -9.31296e-10, 0.99983, -0.0156585, 0.998453, -0.000862473, -0.0550736, 0, 0, 0)
+transform = Transform3D(-0.0550801, -0.0156343, -0.998335, -9.31296e-10, 0.999828, -0.0156585, 0.998453, -0.000862472, -0.0550736, 0, 0, 0)
 
 [node name="Ship" type="Node3D" parent="Path3D/PathFollow3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="BallonShip" parent="Path3D/PathFollow3D/Ship" instance=ExtResource("7_3bmno")]
 transform = Transform3D(0.535, -1.40062e-09, -5.58794e-09, 2.72848e-10, 0.535, -4.36557e-10, 9.31323e-09, 2.61934e-10, 0.535, 0.103016, 0.078872, -0.814718)
-
-[node name="SuperJump" type="SuperJump" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.301883, 1.04057, -5.55964)
-script = ExtResource("12_24nxl")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SuperJump"]
-shape = SubResource("SphereShape3D_r1fgr")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SuperJump"]
-mesh = SubResource("SphereMesh_ly3ux")
-
-[node name="SuperJump2" type="SuperJump" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5836, 1.81926, -6.26071)
-script = ExtResource("12_24nxl")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SuperJump2"]
-shape = SubResource("SphereShape3D_r1fgr")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SuperJump2"]
-mesh = SubResource("SphereMesh_ly3ux")
-
-[node name="Teleporter" type="Teleporter" parent="."]
-transform = Transform3D(-0.287628, 0.0210768, -0.95751, 0, -0.999758, -0.0220068, -0.957742, -0.00632977, 0.287558, -1.78306, 0.0974431, -29.0823)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Teleporter"]
-shape = SubResource("SphereShape3D_r1fgr")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Teleporter"]
-mesh = SubResource("SphereMesh_ly3ux")
 
 [node name="Coins" parent="." instance=ExtResource("12_s6edw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.43222, -0.172303, 4.05084)
@@ -364,5 +328,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0291, 2.19817, -23.6112)
 [node name="Coins10" parent="." instance=ExtResource("12_s6edw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444807, 1.05233, -25.6959)
 
+[node name="JumpBooster" parent="." instance=ExtResource("14_3acf6")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.294638, 0.695058, -5.82261)
+
+[node name="JumpBooster2" parent="." instance=ExtResource("14_3acf6")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -13.3626, 1.25021, -6.02367)
+
+[node name="Teleport" parent="." instance=ExtResource("14_grpl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24504, -1.13781, -29.574)
+
 [connection signal="body_entered" from="BoundaryArea" to="BoundaryArea" method="_on_body_entered"]
-[connection signal="body_entered" from="Teleporter" to="Teleporter" method="_on_area_3d_entered"]

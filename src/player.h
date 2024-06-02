@@ -15,7 +15,7 @@ private:
 	int point;
 	int speed;
 	int jump;
-	bool off_menu;
+	bool end_game;
 
 protected:
 	static void _bind_methods();
@@ -33,6 +33,10 @@ public:
 	void set_jump(int jump);
 
 	void increment_point();
+
+	bool get_end_game();
+
+	void set_end_game(bool value);
 };
 
 }
